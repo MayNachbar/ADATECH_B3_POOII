@@ -33,13 +33,13 @@ public class Moto implements VeiculoMotorizado {
             System.out.println("Acelerando " + velocidade);
             System.out.println("Velocidade atual: " + this.velocidade);
         } else {
-            System.out.println("A moto está desligada!");
+            System.out.println("A moto está desligada, precisa ligar antes para acelerar!");
         }
     }
 
     @Override
     public void frear(int velocidade) {
-        if (!ligado) {
+        if (ligado) {
             this.velocidade -= velocidade;
             System.out.println("Freando " + velocidade);
             System.out.println("Velocidade atual: " + this.velocidade);
@@ -60,9 +60,11 @@ public class Moto implements VeiculoMotorizado {
 
     @Override
     public void desligar() {
-        if (ligado) {
+        if (ligado && velocidade == 0) {
             ligado = false;
             System.out.println("Desligando moto!");
+        } else if (ligado) {
+            System.out.println("A velocidade precisa ser zero para desligar a moto!");
         } else {
             System.out.println("A moto já está desligada!");
         }
@@ -70,6 +72,6 @@ public class Moto implements VeiculoMotorizado {
 
     @Override
     public Integer getVelocidadeMaximaPermitida() {
-        return null;
+        return 200;
     }
 }

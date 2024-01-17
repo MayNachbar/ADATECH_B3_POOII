@@ -18,13 +18,15 @@ public class Bicicleta implements Veiculo {
 
     @Override
     public void acelerar(int velocidade) {
-        int aceleracao = 2;
-        velocidade = this.velocidade + aceleracao;
+        this.velocidade += velocidade;
+        System.out.println("Acelerando bicicleta " + velocidade);
+        System.out.println("Velocidade atual: " + this.velocidade);
     }
 
     @Override
     public void frear(int velocidade) {
-        int aceleracao = 2;
-        velocidade = this.velocidade - aceleracao;
+        this.velocidade -= velocidade;
+        System.out.println("Freando bicicleta " +velocidade);
+        System.out.println("Velocidade atual: " + this.velocidade);
     }
 }

@@ -33,7 +33,7 @@ public class Carro implements VeiculoMotorizado {
             System.out.println("Acelerando " + velocidade);
             System.out.println("Velocidade atual: " + this.velocidade);
         } else {
-            System.out.println("O carro está desligado!");
+            System.out.println("O carro está desligado, precisa ligar antes para acelerar!");
         }
     }
 
@@ -60,16 +60,19 @@ public class Carro implements VeiculoMotorizado {
 
     @Override
     public void desligar() {
-        if (ligado) {
+        if (ligado && velocidade == 0) {
             ligado = false;
             System.out.println("Desligando carro!");
-        } else {
+        } else if (ligado) {
+            System.out.println("A velocidade precisa ser zero para desligar o carro!");
+        }
+        else {
             System.out.println("O carro já está desligado!!");
         }
     }
 
     @Override
     public Integer getVelocidadeMaximaPermitida() {
-        return null;
+        return 250;
     }
 }
